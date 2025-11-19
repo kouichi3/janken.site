@@ -22,7 +22,7 @@
   <!-- 動画を入れる -->
   <div id="display_area">
     <!-- 初期表示は動画だけ -->
-    <video id="janken_movie" src="movie/janken_movie.mp4" controls width="600"></video>
+    <video id="janken_movie" src="movie/janken2_movie.mp4" controls width="400"></video>
   </div>  <!-- ★ これが display_area の閉じタグ -->
 
 
@@ -65,15 +65,15 @@ $("#gu_btn").on("click",function(){
 
     if(r == 1){
         // あいこ
-        showResult("img/gu.jpeg", "あいこ");
+        showResult("img/gu.png", "あいこ");
     }
     if(r == 2){
         // 勝ち
-        showResult("img/tyoki.jpeg", "勝ち");
+        showResult("img/tyoki.png", "勝ち");
     }
     if(r == 3){
         // 負け
-        showResult("img/pa-.jpeg", "負け");
+        showResult("img/pa-.png", "負け");
     }
 });
 
@@ -83,15 +83,15 @@ $("#cho_btn").on("click",function(){
 
     if(r == 1){
         // 負け
-        showResult("img/gu.jpeg", "負け");
+        showResult("img/gu.png", "負け");
     }
     if(r == 2){
         // あいこ
-        showResult("img/tyoki.jpeg", "あいこ");
+        showResult("img/tyoki.png", "あいこ");
     }
     if(r == 3){
         // 勝ち
-        showResult("img/pa-.jpeg", "勝ち");
+        showResult("img/pa-.png", "勝ち");
     }
 });
 
@@ -101,25 +101,25 @@ $("#par_btn").on("click",function(){
 
     if(r == 1){
         // 勝ち
-        showResult("img/tyoki.jpeg", "勝ち");
+        showResult("img/tyoki.png", "勝ち");
     }
     if(r == 2){
         // 負け
-        showResult("img/gu.jpeg", "負け");
+        showResult("img/gu.png", "負け");
     }
     if(r == 3){
         // あいこ
-        showResult("img/pa-.jpeg", "あいこ");
+        showResult("img/pa-.png", "あいこ");
     }
 });
 
 // リセットボタン：動画に戻す（自動再生）
 $("#reset_btn").on("click", function() {
   // ① まず動画タグを差し込む
-  $("#display_area").html('<video id="janken_movie" src="movie/janken_movie.mp4" controls width="400"></video>');
+  $("#display_area").html('<video id="janken2_movie" src="movie/janken2_movie.mp4" controls width="400"></video>');
   
   // ② 直後にそのvideo要素を取得して再生
-  const v = document.getElementById("janken_movie");
+  const v = document.getElementById("janken2_movie");
   if (v) {
     v.play();
   }

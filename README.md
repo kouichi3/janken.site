@@ -5,7 +5,7 @@
 - じゃんけんができるアプリです
 
 ## ③アプリのデプロイURL
-- https://tatsuyamaeta.github.io/github_pages/
+- https://kouichi3.github.io/janken.site/
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
 - ID: 今回なし
