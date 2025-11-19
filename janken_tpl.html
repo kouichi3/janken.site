@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1>サザエさんじゃんけん</h1>
+</header>
+
+<main>
+<!-- ▼ ここから追加する部分 ▼ -->
+
+<div class="intro-block">
+  <h2>じゃんけんで遊ぼう！</h2>
+
+  <!-- 動画を入れる -->
+  <div id="display_area">
+    <!-- 初期表示は動画だけ -->
+    <video id="janken_movie" src="movie/janken_movie.mp4" controls width="600"></video>
+  </div>  <!-- ★ これが display_area の閉じタグ -->
+
+
+</div>      <!-- ★ これが intro-block の閉じタグ -->
+
+<!-- ▲ 追加部分ここまで ▲ -->
+
+<div class="result-area">
+  <p id="pc_hands"></p>
+  <p id="judgment"></p>
+</div>
+
+<!-- ▼ そのまま既存のじゃんけんボタン ▼ -->
+<ul class="ur-box">
+  <li id="gu_btn">グー</li>
+  <li id="cho_btn">チョキ</li>
+  <li id="par_btn">パー</li>
+</ul>
+<!-- リセットボタン：動画に戻す -->
+<div class="reset-area">
+  <button id="reset_btn">リセット（もう一度動画から）</button>
+</div>
+
+
+
+</main>
+
+<footer></footer>
+<script>
+// じゃんけん共通で使う「表示用の関数」を作っておくとラク
+function showResult(imgSrc, text) {
+  // ★ 動画が入っていた枠ごと、画像に置き換える
+  $("#display_area").html('<img src="' + imgSrc + '" alt="' + text + '" width="400">');
+  $("#judgment").text(text);
+}
+
+// グーボタン
+$("#gu_btn").on("click",function(){
+    const r = Math.ceil(Math.random()*3);
+
+    if(r == 1){
+        // あいこ
+        showResult("img/gu.jpeg", "あいこ");
+    }
+    if(r == 2){
+        // 勝ち
+        showResult("img/tyoki.jpeg", "勝ち");
+    }
+    if(r == 3){
+        // 負け
+        showResult("img/pa-.jpeg", "負け");
+    }
+});
+
+// チョキボタン
+$("#cho_btn").on("click",function(){
+    const r = Math.ceil(Math.random()*3);
+
+    if(r == 1){
+        // 負け
+        showResult("img/gu.jpeg", "負け");
+    }
+    if(r == 2){
+        // あいこ
+        showResult("img/tyoki.jpeg", "あいこ");
+    }
+    if(r == 3){
+        // 勝ち
+        showResult("img/pa-.jpeg", "勝ち");
+    }
+});
+
+// パーボタン
+$("#par_btn").on("click",function(){
+    const r = Math.ceil(Math.random()*3);
+
+    if(r == 1){
+        // 勝ち
+        showResult("img/tyoki.jpeg", "勝ち");
+    }
+    if(r == 2){
+        // 負け
+        showResult("img/gu.jpeg", "負け");
+    }
+    if(r == 3){
+        // あいこ
+        showResult("img/pa-.jpeg", "あいこ");
+    }
+});
+
+// リセットボタン：動画に戻す（自動再生）
+$("#reset_btn").on("click", function() {
+  // ① まず動画タグを差し込む
+  $("#display_area").html('<video id="janken_movie" src="movie/janken_movie.mp4" controls width="400"></video>');
+  
+  // ② 直後にそのvideo要素を取得して再生
+  const v = document.getElementById("janken_movie");
+  if (v) {
+    v.play();
+  }
+
+  // ③ 勝ち負け表示をクリア
+  $("#judgment").text("");
+});
+</script>
+</body>
+</html>
